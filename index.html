@@ -95,6 +95,23 @@
     text-transform:uppercase;padding:4px 9px;border-radius:999px}
   .tag.live{background:rgba(95,211,168,.14);color:var(--accent);border:1px solid rgba(95,211,168,.3)}
   .tag.build{background:rgba(244,184,96,.13);color:var(--accent-warm);border:1px solid rgba(244,184,96,.3)}
+  .tag.idea{background:rgba(122,162,255,.13);color:var(--accent-2);border:1px solid rgba(122,162,255,.3)}
+
+  /* build list */
+  .filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px}
+  .chip{background:var(--card);border:1px solid var(--border-strong);color:var(--muted);
+    padding:8px 16px;border-radius:999px;font-size:.88rem;font-weight:600;cursor:pointer;transition:all .12s ease}
+  .chip:hover{background:var(--card-hover);color:var(--text)}
+  .chip.active{background:var(--text);color:var(--bg);border-color:var(--text)}
+  .bcard{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px 20px;
+    display:flex;flex-direction:column;gap:8px;position:relative}
+  .bcard .cat{font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);font-weight:700}
+  .bcard h3{margin:0;font-size:1.04rem;letter-spacing:-.01em;padding-right:74px}
+  .bcard p{margin:0;color:var(--muted);font-size:.9rem;flex:1}
+  .bcard .row{display:flex;align-items:center;gap:14px;margin-top:4px}
+  .bcard .claim{font-size:.84rem;font-weight:700;color:var(--accent)}
+  .bcard a.ext{font-size:.82rem;color:var(--faint)}
+  .buildnote{margin-top:26px;color:var(--faint);font-size:.92rem;text-align:center}
 
   /* quote */
   blockquote{margin:0;background:var(--bg-soft);border:1px solid var(--border);border-left:4px solid var(--accent);
@@ -127,6 +144,7 @@
   <div class="nav-links">
     <a href="#manifesto">Manifesto</a>
     <a href="#tools">Tools</a>
+    <a href="#buildlist">Build List</a>
     <a href="#vision">The Vision</a>
     <a href="#join">Join</a>
     <button class="theme-btn" id="themeBtn" title="Toggle light/dark" aria-label="Toggle theme">☀️</button>
@@ -216,6 +234,22 @@
   </blockquote>
 </div></section>
 
+<section id="buildlist"><div class="wrap">
+  <div class="section-head">
+    <div class="kicker">The Open Build List</div>
+    <h2>What still needs to be built</h2>
+    <p>The infrastructure for human flourishing is mostly <em>not built yet</em>. Below is the running list — ideas, works-in-progress, and what's done. Lifted from the Codex master doc; we'll keep pulling in more from across the lists. See one you want to build? <strong>Claim it.</strong></p>
+  </div>
+  <div class="filters" id="filters">
+    <button class="chip active" data-f="all">All</button>
+    <button class="chip" data-f="idea">💡 Ideas</button>
+    <button class="chip" data-f="building">🔨 In progress</button>
+    <button class="chip" data-f="done">✅ Done</button>
+  </div>
+  <div class="grid" id="buildgrid"></div>
+  <p class="buildnote">This list is open. To add an idea or claim one, email <a href="mailto:jacob@ideaflow.io?subject=Open%20Build%20List">jacob@ideaflow.io</a> — a public claim &amp; tracking system (via <a href="https://worldissuetracker.com" target="_blank" rel="noopener">World Issue Tracker</a>) is coming.</p>
+</div></section>
+
 <section id="vision"><div class="wrap">
   <div class="section-head">
     <div class="kicker">The Living Document</div>
@@ -273,11 +307,74 @@
   <div style="text-align:right">
     <a href="https://docs.google.com/document/d/1-dxQdUBJ50f7qMO3lTemHEYcT7XUe4pOTgetf_KcMk0/edit" target="_blank" rel="noopener">Master doc</a> ·
     <a href="https://plausible-text-76b.notion.site/Cody-s-Healing-List-v4-b05b097d529c4c54b5d62f87f55b1f6f" target="_blank" rel="noopener">Notion</a><br/>
-    <span class="ver">v0.1.0 · 2026-06-13</span>
+    <span class="ver">v0.2.0 · 2026-06-13</span>
   </div>
 </div></footer>
 
 <script>
+  // ---- Open Build List data (lifted from the Codex master doc) ----
+  var BUILD=[
+    {c:"Collective Action",t:"ThunderPledge",s:"idea",u:"http://thunderpledge.jacobcole.net",d:"Kickstarter for collective action: pledge to go vegetarian, vote, or boycott — but only once a critical mass also commits. Variants: ThunderVote, ThunderBoycott ('Kickstopper')."},
+    {c:"Collective Action",t:"Zero-Sum Redirect",s:"idea",d:"A clearinghouse for opposing political donations — matched contributions cancel out and the saved money goes to charity instead."},
+    {c:"Collective Action",t:"Government Suggestion Box",s:"idea",d:"A suggestion-box platform for governments, including the ability to donate toward implementing specific suggestions."},
+    {c:"Collective Action",t:"Everyone-a-Philanthropist",s:"idea",d:"Infrastructure so communities can pool resources to fill missing government functions — help a neighbor afford insurance, get a kid a laptop."},
+    {c:"Collective Action",t:"Resource-Sharing Platform",s:"idea",u:"http://favorverse.jacobcole.net/",d:"Let people share what they can lend — tools, a U-Haul, time. Related: Favorverse & VolunteerForce."},
+    {c:"Reputation & Trust",t:"Open Reputation System",s:"idea",d:"A portable, open reputation layer — the missing primitive for trust in online coordination."},
+    {c:"Reputation & Trust",t:"Trust Layer / Meta-Brands",s:"idea",u:"http://fixingtheinternet.jacobcole.net/",d:"A trust layer for the web — 'meta-brands' that vouch for quality and integrity."},
+    {c:"Reputation & Trust",t:"Fact-Check Extension",s:"idea",u:"http://factcheck.jacobcole.net/",d:"A browser extension surfacing fact-checks and provenance inline."},
+    {c:"Fixing the Internet",t:"Open Forum Software",s:"building",u:"https://github.com/gulkily/pollyanna",d:"Forum software that is transparent, consensual, and open-source (Pollyanna)."},
+    {c:"Fixing the Internet",t:"Minimalist Homepages",s:"idea",u:"http://minimalisthomepages.com/",d:"A better way to make calm, minimalist personal homepages."},
+    {c:"Fixing the Internet",t:"ThoughtfulWeb",s:"idea",u:"http://thoughtfulweb.jacobcole.net",d:"A directory of places on the web that are thoughtful, artful, and mindful — an oasis of good taste."},
+    {c:"Personal Leverage",t:"'Camel's Eye' Email Agent",s:"idea",d:"An agent that filters and triages email on your behalf (from Permutation City). Reclaim your attention."},
+    {c:"Personal Leverage",t:"Shortcut / Macro Coach",s:"idea",d:"Watches your actions and occasionally suggests a shortcut, auto-writing the macro for you."},
+    {c:"Personal Leverage",t:"Open Automation Tools",s:"idea",d:"Great open-source macro & browser-automation frameworks (Browserflow-style) for everyone."},
+    {c:"Personal Leverage",t:"Shopping Coach",s:"idea",d:"A service that shops on your behalf — finds the best, most ethical option so you don't have to."},
+    {c:"Open Knowledge",t:"Open Meditation Curricula",s:"building",u:"http://meditation.jacobcole.net/",d:"Basic open curricula for meditation and working with your body. Lists exist; needs a real course."},
+    {c:"Open Knowledge",t:"Open Medical Knowledge",s:"building",u:"http://chronicpain.jacobcole.net/",d:"How to treat chronic pain, RSI, and more — patient-first medical know-how. Lists started."},
+    {c:"Open Knowledge",t:"Open Academic Education",s:"idea",d:"University-level math, an open algorithms tutor, and interactive self-teaching programming resources."},
+    {c:"Open Knowledge",t:"Open Work Templates",s:"idea",d:"Open templates for every kind of work — invoices, gantt charts, proposals."},
+    {c:"Open Knowledge",t:"Role-Model Casting",s:"idea",u:"http://foodslist.jacobcole.net/",d:"For people without good role models — emulate the routines of healthy, effective people (e.g. foods lists)."},
+    {c:"Open Knowledge",t:"Motivation Database",s:"idea",u:"http://whyisitawesome.jacobcole.net/",d:"A wiki of why all the awesome things in the world are awesome — fuel for motivation."},
+    {c:"Open Knowledge",t:"'Books to Grow Up On'",s:"idea",u:"http://kidactivities.jacobcole.net",d:"An open list of literature that builds good mental models — plus kids' games & activities."},
+    {c:"Assistive Tech",t:"Hands-Free Voice Interfaces",s:"idea",d:"Good hands-free voice-recognition hooks into common sites (Gmail, etc.) for quadriplegics and others. Lots of low-hanging fruit."},
+    {c:"Assistive Tech",t:"Cueing App for Brain Injuries",s:"idea",d:"A cueing/reminder app for people recovering from brain injuries."},
+    {c:"Assistive Tech",t:"Better Foot Mouse",s:"idea",d:"A better foot-operated mouse for people who can't use their hands."},
+    {c:"Coordination Infra",t:"On-the-Fly Knowledge Capture",s:"building",u:"https://globalbr.ai",d:"Frictionless personal knowledge capture + a graph query engine. Being built as Noos."},
+    {c:"Coordination Infra",t:"Global Idea Bank",s:"building",u:"https://tmad4000.github.io/brainstorms/",d:"An open bank of ideas & hackathon projects anyone can take and build. Live as the Idea List."},
+    {c:"Coordination Infra",t:"Open Research Repository",s:"idea",u:"http://openresearch.connekt.site",d:"A global, open repository for research — make the world's findings freely usable."},
+    {c:"Care & Society",t:"Adult 'Foster' Support Network",s:"idea",d:"Ubiquitous support — 'extra parents' — for adults facing challenges so no one falls through the cracks."},
+    {c:"Care & Society",t:"Non-Emergency Help Button",s:"idea",d:"A button to request non-emergency help: a compassionate responder for mental-health crises, a care coordinator, a 'life figure-outer'."},
+    {c:"Care & Society",t:"Database of Survival Guides",s:"idea",d:"'How to survive/thrive' guides across many contexts — including for highly sensitive people on a budget."},
+    {c:"Care & Society",t:"Database of Human Ideals",s:"idea",d:"Documenting the multiplicity of happy cultures and ways of being."},
+    {c:"Done",t:"OpenLibrary",s:"done",u:"https://openlibrary.org",d:"Open, universal catalog of books. Exists — and it's wonderful."},
+    {c:"Done",t:"Internet Archive",s:"done",u:"https://archive.org",d:"Humanity's library and memory. Exists — support it."},
+    {c:"Done",t:"Concentration Music",s:"done",d:"Open 'music for concentration' playlists everyone can access. Largely solved."}
+  ];
+  (function(){
+    var grid=document.getElementById('buildgrid'), filters=document.getElementById('filters');
+    var labels={idea:["idea","💡 Idea"],building:["build","🔨 In progress"],done:["done","✅ Done"]};
+    function render(f){
+      grid.innerHTML='';
+      BUILD.filter(function(b){return f==='all'||b.s===f}).forEach(function(b){
+        var lab=labels[b.s]||["idea","Idea"];
+        var ext=b.u?'<a class="ext" href="'+b.u+'" target="_blank" rel="noopener">↗ link</a>':'';
+        var claim='<a class="claim" href="mailto:jacob@ideaflow.io?subject='+encodeURIComponent('Claiming: '+b.t)+'">Claim →</a>';
+        var el=document.createElement('div');
+        el.className='bcard';
+        el.innerHTML='<span class="tag '+lab[0]+'">'+lab[1]+'</span><div class="cat">'+b.c+'</div><h3>'+b.t+'</h3><p>'+b.d+'</p><div class="row">'+claim+ext+'</div>';
+        grid.appendChild(el);
+      });
+    }
+    filters.addEventListener('click',function(e){
+      if(e.target.classList.contains('chip')){
+        [].forEach.call(filters.children,function(c){c.classList.remove('active')});
+        e.target.classList.add('active');
+        render(e.target.getAttribute('data-f'));
+      }
+    });
+    render('all');
+  })();
+
   (function(){
     var root=document.documentElement, btn=document.getElementById('themeBtn');
     var saved=null; try{saved=localStorage.getItem('h3-theme')}catch(e){}
