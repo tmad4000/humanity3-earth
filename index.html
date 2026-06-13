@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Humanity³ — The Codex · Basic Infrastructure for Human Flourishing</title>
+<meta name="description" content="A codex of human know-how as a public resource to humanity. Free, open-source tools and knowledge to coordinate human activity — and bring flourishing into every person's reach. This is how we coordinate as a superorganism." />
+<meta property="og:title" content="Humanity³ — The Codex" />
+<meta property="og:description" content="Knowledge as a birthright. Open tools for human flourishing. This is how we coordinate as a superorganism." />
+<meta property="og:type" content="website" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌍</text></svg>" />
+<style>
+  :root{
+    --bg:#0c0f14; --bg-soft:#12161f; --card:#161b26; --card-hover:#1c2230;
+    --text:#e8edf6; --muted:#97a1b3; --faint:#5d6678;
+    --accent:#5fd3a8; --accent-2:#7aa2ff; --accent-warm:#f4b860;
+    --border:rgba(255,255,255,.08); --border-strong:rgba(255,255,255,.16);
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 30px rgba(0,0,0,.35);
+    --max:1080px;
+  }
+  [data-theme="light"]{
+    --bg:#f7f8fa; --bg-soft:#eef1f6; --card:#ffffff; --card-hover:#f3f6fb;
+    --text:#16202e; --muted:#566074; --faint:#8a93a6;
+    --accent:#0f9d72; --accent-2:#3a64d8; --accent-warm:#c98415;
+    --border:rgba(10,20,40,.10); --border-strong:rgba(10,20,40,.18);
+    --shadow:0 1px 2px rgba(20,30,50,.06),0 10px 34px rgba(20,30,50,.10);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--bg);color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.6;-webkit-font-smoothing:antialiased;
+    background-image:radial-gradient(900px 500px at 80% -10%,rgba(122,162,255,.10),transparent 60%),radial-gradient(800px 500px at 0% 0%,rgba(95,211,168,.08),transparent 55%);
+  }
+  a{color:var(--accent-2);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+  /* nav */
+  nav{position:sticky;top:0;z-index:20;backdrop-filter:saturate(140%) blur(12px);
+    background:color-mix(in srgb,var(--bg) 82%,transparent);border-bottom:1px solid var(--border)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px;gap:16px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:-.01em;font-size:1.05rem;color:var(--text)}
+  .brand span.logo{font-size:1.3rem}
+  .nav-links{display:flex;gap:22px;align-items:center}
+  .nav-links a{color:var(--muted);font-size:.92rem;font-weight:500}
+  .nav-links a:hover{color:var(--text);text-decoration:none}
+  .theme-btn{background:var(--card);border:1px solid var(--border-strong);color:var(--text);
+    width:36px;height:36px;border-radius:10px;cursor:pointer;font-size:1rem;display:grid;place-items:center}
+  .theme-btn:hover{background:var(--card-hover)}
+  @media(max-width:680px){.nav-links a:not(.cta){display:none}}
+
+  /* hero */
+  header.hero{padding:88px 0 56px;text-align:center}
+  .eyebrow{display:inline-block;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--accent);font-weight:700;border:1px solid var(--border-strong);
+    padding:6px 14px;border-radius:999px;margin-bottom:26px;background:var(--bg-soft)}
+  h1{font-size:clamp(2.4rem,6vw,4.3rem);line-height:1.04;letter-spacing:-.03em;margin:0 0 22px;font-weight:800}
+  h1 .grad{background:linear-gradient(110deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .lede{font-size:clamp(1.1rem,2.4vw,1.4rem);color:var(--muted);max-width:720px;margin:0 auto 18px}
+  .sub{font-size:1.02rem;color:var(--faint);max-width:680px;margin:0 auto 36px;font-style:italic}
+  .btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:9px;padding:13px 24px;border-radius:12px;
+    font-weight:600;font-size:1rem;border:1px solid transparent;cursor:pointer;transition:transform .12s ease}
+  .btn:hover{text-decoration:none;transform:translateY(-2px)}
+  .btn.primary{background:linear-gradient(110deg,var(--accent),var(--accent-2));color:#06120d}
+  .btn.ghost{background:var(--card);border-color:var(--border-strong);color:var(--text)}
+  .btn.ghost:hover{background:var(--card-hover)}
+
+  section{padding:64px 0;border-top:1px solid var(--border)}
+  .section-head{margin-bottom:36px;max-width:760px}
+  .section-head h2{font-size:clamp(1.6rem,3.4vw,2.3rem);letter-spacing:-.02em;margin:0 0 12px;font-weight:800}
+  .section-head p{color:var(--muted);font-size:1.06rem;margin:0}
+  .kicker{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-warm);font-weight:700;margin-bottom:10px}
+
+  /* manifesto pillars */
+  .pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+  .pillar{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px}
+  .pillar .ico{font-size:1.7rem;margin-bottom:12px}
+  .pillar h3{margin:0 0 8px;font-size:1.12rem;letter-spacing:-.01em}
+  .pillar p{margin:0;color:var(--muted);font-size:.96rem}
+
+  /* tools grid */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px}
+  .card{display:block;background:var(--card);border:1px solid var(--border);border-radius:16px;
+    padding:22px;transition:transform .14s ease,border-color .14s ease,background .14s ease;position:relative}
+  .card:hover{transform:translateY(-4px);border-color:var(--border-strong);background:var(--card-hover);text-decoration:none;box-shadow:var(--shadow)}
+  .card .top{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+  .card .emoji{font-size:1.5rem;width:42px;height:42px;border-radius:11px;background:var(--bg-soft);display:grid;place-items:center;flex:none}
+  .card h3{margin:0;font-size:1.1rem;color:var(--text);letter-spacing:-.01em}
+  .card .url{font-size:.8rem;color:var(--accent);font-weight:600}
+  .card p{margin:0;color:var(--muted);font-size:.93rem}
+  .tag{position:absolute;top:16px;right:16px;font-size:.66rem;font-weight:700;letter-spacing:.06em;
+    text-transform:uppercase;padding:4px 9px;border-radius:999px}
+  .tag.live{background:rgba(95,211,168,.14);color:var(--accent);border:1px solid rgba(95,211,168,.3)}
+  .tag.build{background:rgba(244,184,96,.13);color:var(--accent-warm);border:1px solid rgba(244,184,96,.3)}
+
+  /* quote */
+  blockquote{margin:0;background:var(--bg-soft);border:1px solid var(--border);border-left:4px solid var(--accent);
+    border-radius:14px;padding:26px 30px;font-size:1.12rem;color:var(--text)}
+  blockquote cite{display:block;margin-top:14px;font-size:.92rem;color:var(--faint);font-style:normal}
+
+  /* lists row */
+  .links-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+  .lcol{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px}
+  .lcol h4{margin:0 0 12px;font-size:.95rem;color:var(--text)}
+  .lcol ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+  .lcol li a{color:var(--muted);font-size:.9rem}
+  .lcol li a:hover{color:var(--accent-2)}
+
+  /* CTA */
+  .cta-band{background:linear-gradient(120deg,rgba(95,211,168,.10),rgba(122,162,255,.10));
+    border:1px solid var(--border-strong);border-radius:22px;padding:48px;text-align:center}
+  .cta-band h2{font-size:clamp(1.6rem,3.4vw,2.2rem);margin:0 0 12px;letter-spacing:-.02em}
+  .cta-band p{color:var(--muted);max-width:620px;margin:0 auto 26px;font-size:1.05rem}
+
+  footer{padding:48px 0 60px;border-top:1px solid var(--border);color:var(--faint);font-size:.88rem}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:18px;align-items:center}
+  footer a{color:var(--muted)}
+  .ver{font-variant-numeric:tabular-nums;opacity:.7}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="#top"><span class="logo">🌍</span> Humanity³ <span style="color:var(--faint);font-weight:500">· The Codex</span></a>
+  <div class="nav-links">
+    <a href="#manifesto">Manifesto</a>
+    <a href="#tools">Tools</a>
+    <a href="#vision">The Vision</a>
+    <a href="#join">Join</a>
+    <button class="theme-btn" id="themeBtn" title="Toggle light/dark" aria-label="Toggle theme">☀️</button>
+  </div>
+</div></nav>
+
+<a id="top"></a>
+<header class="hero"><div class="wrap">
+  <span class="eyebrow">Basic Infrastructure for Human Flourishing</span>
+  <h1>Knowledge is a <span class="grad">birthright</span>.<br/>So are the tools to use it.</h1>
+  <p class="lede">A codex of human know-how as a public resource to humanity — plus the open-source software to coordinate human activity around it. The not-just-engineering equivalent of the open-source movement.</p>
+  <p class="sub">“Building tools for the well-intended.” This is how we coordinate as a superorganism.</p>
+  <div class="btns">
+    <a class="btn primary" href="#tools">Explore the tools →</a>
+    <a class="btn ghost" href="#manifesto">Read the manifesto</a>
+  </div>
+</div></header>
+
+<section id="manifesto"><div class="wrap">
+  <div class="section-head">
+    <div class="kicker">The Premise</div>
+    <h2>Imagine it were everyone's birthright to access the sum-total of human know-how.</h2>
+    <p>The Codex is a hub of knowledge resources and open-source infrastructure — built to bring human flourishing into every person's reach. We envision something most of the developed world eventually becomes part of, to a greater or lesser degree.</p>
+  </div>
+  <div class="pillars">
+    <div class="pillar"><div class="ico">📖</div><h3>Knowledge as a public good</h3><p>Survival and thriving guides, medical know-how, open curricula, role-model casting, the craftsmanship that is all software. Shouldn't software from 10 years ago be free by now?</p></div>
+    <div class="pillar"><div class="ico">🛠️</div><h3>Tools that make people independent</h3><p>Open reputation systems, collective-action tools, personal-leverage automation, assistive tech. Hacked-together infrastructure that helps people help themselves.</p></div>
+    <div class="pillar"><div class="ico">🤝</div><h3>Coordinate as a superorganism</h3><p>Guilds taking on epic quests. Global sense-making. Volunteerism, philanthropy for everyone, and ways to pitch in on the problems that matter — together.</p></div>
+    <div class="pillar"><div class="ico">🌱</div><h3>Flourishing in reach for all</h3><p>From "how to thrive as a highly sensitive person on a budget" to "how to rebuild society from scratch." Compassionate, practical, and free.</p></div>
+  </div>
+</div></section>
+
+<section id="tools"><div class="wrap">
+  <div class="section-head">
+    <div class="kicker">Working Tools</div>
+    <h2>Pieces of the infrastructure that already exist</h2>
+    <p>Free and open. Use them today — and help build the rest.</p>
+  </div>
+  <div class="grid">
+    <a class="card" href="https://nvctranslator.com" target="_blank" rel="noopener">
+      <span class="tag live">Live</span>
+      <div class="top"><span class="emoji">🕊️</span><div><h3>NVC Translator</h3><div class="url">nvctranslator.com</div></div></div>
+      <p>Translate any text into Marshall Rosenberg's Nonviolent Communication — observations, feelings, needs, requests. How can AI make us more compassionate?</p>
+    </a>
+    <a class="card" href="https://globalbr.ai" target="_blank" rel="noopener">
+      <span class="tag live">Live</span>
+      <div class="top"><span class="emoji">🧠</span><div><h3>Noos</h3><div class="url">globalbr.ai</div></div></div>
+      <p>A universal knowledge graph — the "codex" backend. Capture, connect, and query human know-how with per-node privacy.</p>
+    </a>
+    <a class="card" href="https://wikihub.md" target="_blank" rel="noopener">
+      <span class="tag live">Live</span>
+      <div class="top"><span class="emoji">📚</span><div><h3>WikiHub</h3><div class="url">wikihub.md</div></div></div>
+      <p>GitHub for LLM wikis. Hosting for open, agent-native markdown knowledge bases — forkable, shareable, version-controlled.</p>
+    </a>
+    <a class="card" href="https://listhub.globalbr.ai" target="_blank" rel="noopener">
+      <span class="tag live">Live</span>
+      <div class="top"><span class="emoji">📝</span><div><h3>ListHub</h3><div class="url">listhub.globalbr.ai</div></div></div>
+      <p>Open list & note publishing with a REST API and two-way git sync. The home for the open-lists movement.</p>
+    </a>
+    <a class="card" href="https://worldissuetracker.com" target="_blank" rel="noopener">
+      <span class="tag live">Live</span>
+      <div class="top"><span class="emoji">🌐</span><div><h3>World Issue Tracker</h3><div class="url">worldissuetracker.com</div></div></div>
+      <p>A public issue tracker for civic and shared problems — a bottom-up list of what's broken, and who's fixing it.</p>
+    </a>
+    <a class="card" href="https://tmad4000.github.io/brainstorms/" target="_blank" rel="noopener">
+      <span class="tag live">Live</span>
+      <div class="top"><span class="emoji">💡</span><div><h3>Idea List</h3><div class="url">tmad4000.github.io/brainstorms</div></div></div>
+      <p>An open idea bank — projects, hackathon ideas, and easily-solvable world problems, free for anyone to take and build.</p>
+    </a>
+    <a class="card" href="https://github.com/tmad4000/claude-mind" target="_blank" rel="noopener">
+      <span class="tag live">Live</span>
+      <div class="top"><span class="emoji">🔬</span><div><h3>Claude Mind</h3><div class="url">github.com/tmad4000/claude-mind</div></div></div>
+      <p>Collaborative AI–human exploration of open problems — research rabbits and guilds working the quests, Polymath-style.</p>
+    </a>
+    <a class="card" href="https://github.com/tmad4000/vibe-coding-guide" target="_blank" rel="noopener">
+      <span class="tag live">Live</span>
+      <div class="top"><span class="emoji">⚡</span><div><h3>Vibe Coding Guide</h3><div class="url">github.com/tmad4000/vibe-coding-guide</div></div></div>
+      <p>Open guide to AI-assisted coding — making the craftsmanship of software buildable by everyone.</p>
+    </a>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <blockquote>
+    “We need these tools, all of them, and to be honest with you, they need to be in the hands of everybody… When humans come into guilds to do epic quests, they're problem-solving, they're inventing a solution. That's how this planet's going to get fixed.”
+    <cite>— Jack Park, on guilds &amp; global sense-making</cite>
+  </blockquote>
+</div></section>
+
+<section id="vision"><div class="wrap">
+  <div class="section-head">
+    <div class="kicker">The Living Document</div>
+    <h2>The full vision — and where to add to it</h2>
+    <p>The Codex is an open, growing document. These are the canonical sources behind this page. Add yourself, add a project, add a resource.</p>
+  </div>
+  <div class="links-cols">
+    <div class="lcol">
+      <h4>📜 Read the source</h4>
+      <ul>
+        <li><a href="https://docs.google.com/document/d/1-dxQdUBJ50f7qMO3lTemHEYcT7XUe4pOTgetf_KcMk0/edit" target="_blank" rel="noopener">The Codex — master doc (Google Docs)</a></li>
+        <li><a href="https://plausible-text-76b.notion.site/Cody-s-Healing-List-v4-b05b097d529c4c54b5d62f87f55b1f6f" target="_blank" rel="noopener">Healing Resources — "Cody Codex" (Notion)</a></li>
+        <li><a href="http://worldquestguild.connectordocs.com/" target="_blank" rel="noopener">World Quest Guild — add yourself</a></li>
+      </ul>
+    </div>
+    <div class="lcol">
+      <h4>🧭 Movements within</h4>
+      <ul>
+        <li><a href="http://opensource.jacobcole.net" target="_blank" rel="noopener">Open Source dashboard</a></li>
+        <li><a href="http://openlists.jacobcole.net" target="_blank" rel="noopener">Open Lists movement</a></li>
+        <li><a href="http://fixingtheinternet.jacobcole.net/" target="_blank" rel="noopener">Fixing the Internet</a></li>
+        <li><a href="http://favorverse.jacobcole.net/" target="_blank" rel="noopener">Favorverse — volunteerism</a></li>
+        <li><a href="http://thunderpledge.jacobcole.net" target="_blank" rel="noopener">ThunderPledge — collective action</a></li>
+      </ul>
+    </div>
+    <div class="lcol">
+      <h4>🌿 Knowledge &amp; flourishing</h4>
+      <ul>
+        <li><a href="http://meditation.jacobcole.net/" target="_blank" rel="noopener">Open meditation curricula</a></li>
+        <li><a href="http://chronicpain.jacobcole.net/" target="_blank" rel="noopener">Treating chronic pain</a></li>
+        <li><a href="http://foodslist.jacobcole.net/" target="_blank" rel="noopener">How to eat well</a></li>
+        <li><a href="http://supplements.jacobcole.net/" target="_blank" rel="noopener">Supplement stacks</a></li>
+        <li><a href="http://bodymasters.jacobcole.net" target="_blank" rel="noopener">Body Masters</a></li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
+<section id="join"><div class="wrap">
+  <div class="cta-band">
+    <h2>If you're not part of this, what are you doing with your life?</h2>
+    <p>We're building the more general, not-just-engineering equivalent of the open-source movement. There's an enormous amount of low-hanging fruit — and we're looking for designers, engineers, writers, healers, and well-intended humans of every kind.</p>
+    <div class="btns" style="justify-content:center">
+      <a class="btn primary" href="mailto:jacob@ideaflow.io?subject=Joining%20the%20Codex%20%2F%20Humanity%20Infrastructure">Get involved →</a>
+      <a class="btn ghost" href="http://worldquestguild.connectordocs.com/" target="_blank" rel="noopener">Join a guild</a>
+    </div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div>
+    <strong style="color:var(--text)">Humanity³ · The Codex</strong> — basic infrastructure for human flourishing.<br/>
+    Free &amp; open source. Contact <a href="mailto:jacob@ideaflow.io">jacob@ideaflow.io</a>
+  </div>
+  <div style="text-align:right">
+    <a href="https://docs.google.com/document/d/1-dxQdUBJ50f7qMO3lTemHEYcT7XUe4pOTgetf_KcMk0/edit" target="_blank" rel="noopener">Master doc</a> ·
+    <a href="https://plausible-text-76b.notion.site/Cody-s-Healing-List-v4-b05b097d529c4c54b5d62f87f55b1f6f" target="_blank" rel="noopener">Notion</a><br/>
+    <span class="ver">v0.1.0 · 2026-06-13</span>
+  </div>
+</div></footer>
+
+<script>
+  (function(){
+    var root=document.documentElement, btn=document.getElementById('themeBtn');
+    var saved=null; try{saved=localStorage.getItem('h3-theme')}catch(e){}
+    if(saved){root.setAttribute('data-theme',saved)}
+    function sync(){btn.textContent=root.getAttribute('data-theme')==='dark'?'☀️':'🌙'}
+    sync();
+    btn.addEventListener('click',function(){
+      var next=root.getAttribute('data-theme')==='dark'?'light':'dark';
+      root.setAttribute('data-theme',next);
+      try{localStorage.setItem('h3-theme',next)}catch(e){}
+      sync();
+    });
+  })();
+</script>
+</body>
+</html>
