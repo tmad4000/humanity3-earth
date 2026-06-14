@@ -112,6 +112,14 @@
   .bcard .claim{font-size:.84rem;font-weight:700;color:var(--accent)}
   .bcard a.ext{font-size:.82rem;color:var(--faint)}
   .buildnote{margin-top:26px;color:var(--faint);font-size:.92rem;text-align:center}
+  .claim-head{margin:48px 0 22px;text-align:center}
+  .claim-head h3{font-size:1.5rem;letter-spacing:-.02em;margin:0 0 8px;display:inline-flex;align-items:center;gap:10px}
+  .claim-head p{color:var(--muted);max-width:640px;margin:0 auto;font-size:.98rem}
+  .livedot{width:10px;height:10px;border-radius:50%;background:#ef5f5f;display:inline-block;box-shadow:0 0 0 0 rgba(239,95,95,.5);animation:pulse 2s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(239,95,95,.5)}70%{box-shadow:0 0 0 8px rgba(239,95,95,0)}100%{box-shadow:0 0 0 0 rgba(239,95,95,0)}}
+  .witloading{color:var(--faint);padding:30px;grid-column:1/-1;text-align:center}
+  .bcard .votes{font-size:.8rem;color:var(--faint);font-weight:600}
+  .bcard .claimedby{font-size:.82rem;color:var(--accent-warm);font-weight:700}
 
   /* quote */
   blockquote{margin:0;background:var(--bg-soft);border:1px solid var(--border);border-left:4px solid var(--accent);
@@ -247,7 +255,13 @@
     <button class="chip" data-f="done">✅ Done</button>
   </div>
   <div class="grid" id="buildgrid"></div>
-  <p class="buildnote">This list is open. To add an idea or claim one, email <a href="mailto:jacob@ideaflow.io?subject=Open%20Build%20List">jacob@ideaflow.io</a> — a public claim &amp; tracking system (via <a href="https://worldissuetracker.com" target="_blank" rel="noopener">World Issue Tracker</a>) is coming.</p>
+  <p class="buildnote">This list is open. Add an idea or claim one on the <a href="https://missing-civ-infrastructure.worldissuetracker.com/" target="_blank" rel="noopener">Missing Civilization Infrastructure</a> board — or email <a href="mailto:jacob@ideaflow.io?subject=Open%20Build%20List">jacob@ideaflow.io</a>.</p>
+
+  <div class="claim-head">
+    <h3><span class="livedot"></span> Claim a quest — live from the tracker</h3>
+    <p>These ideas are filed as real, public issues on the <a href="https://missing-civ-infrastructure.worldissuetracker.com/" target="_blank" rel="noopener">World Issue Tracker</a>. Vote, discuss, or claim one to build — updates here in real time.</p>
+  </div>
+  <div class="grid" id="witgrid"><div class="witloading">Loading open quests from the tracker…</div></div>
 </div></section>
 
 <section id="vision"><div class="wrap">
@@ -308,7 +322,7 @@
   <div style="text-align:right">
     <a href="https://www.notion.so/jacobblog/Humanity-3-0-and-Dharmic-blueprint-314fda9cff6380bfae57ff843cce32dd" target="_blank" rel="noopener">Blueprint (Notion)</a> ·
     <a href="https://docs.google.com/document/d/1-dxQdUBJ50f7qMO3lTemHEYcT7XUe4pOTgetf_KcMk0/edit" target="_blank" rel="noopener">Master doc</a><br/>
-    <span class="ver">v0.2.1 · 2026-06-13</span>
+    <span class="ver">v0.3.0 · 2026-06-13</span>
   </div>
 </div></footer>
 
@@ -349,7 +363,32 @@
     {c:"Care & Society",t:"Database of Human Ideals",s:"idea",d:"Documenting the multiplicity of happy cultures and ways of being."},
     {c:"Done",t:"OpenLibrary",s:"done",u:"https://openlibrary.org",d:"Open, universal catalog of books. Exists — and it's wonderful."},
     {c:"Done",t:"Internet Archive",s:"done",u:"https://archive.org",d:"Humanity's library and memory. Exists — support it."},
-    {c:"Done",t:"Concentration Music",s:"done",d:"Open 'music for concentration' playlists everyone can access. Largely solved."}
+    {c:"Done",t:"Concentration Music",s:"done",d:"Open 'music for concentration' playlists everyone can access. Largely solved."},
+    {c:"Fixing the Internet",t:"Cross-Site Hashtag Search",s:"idea",u:"http://fixingtheinternet.jacobcole.net/",d:"Search a hashtag uniformly across every social platform and website at once."},
+    {c:"Fixing the Internet",t:"Universal Comments Layer",s:"idea",u:"http://fixingtheinternet.jacobcole.net/",d:"Attach comment threads to any webpage, email, or chat, viewable by anyone."},
+    {c:"Fixing the Internet",t:"Universal Web Annotations",s:"idea",u:"http://fixingtheinternet.jacobcole.net/",d:"A shared highlight-and-note layer that pins annotations onto any page across the web."},
+    {c:"Open Knowledge",t:"Canonical Debate Lab",s:"idea",u:"http://fixingtheinternet.jacobcole.net/",d:"A structured platform that organizes contested claims and their arguments toward resolution."},
+    {c:"Open Knowledge",t:"Scientific Assertions Database",s:"idea",u:"http://fixingtheinternet.jacobcole.net/",d:"A machine-readable repository of scientific claims with their dependencies and evidence mapped."},
+    {c:"Open Knowledge",t:"Collaborative Theorem Prover",s:"idea",u:"http://fixingtheinternet.jacobcole.net/",d:"A shared workspace where mathematicians jointly build and verify formal proofs."},
+    {c:"Open Knowledge",t:"Negative Results Repository",s:"idea",u:"http://fixingtheinternet.jacobcole.net/",d:"An archive of failed experiments and null results so research isn't needlessly duplicated."},
+    {c:"Open Knowledge",t:"Argument Repository",s:"idea",u:"http://fixingtheinternet.jacobcole.net/",d:"A searchable database of debate outlines and reusable argumentative frameworks."},
+    {c:"Coordination Infra",t:"Policy & Science Simulator",s:"idea",u:"http://fixingtheinternet.jacobcole.net/",d:"A sandbox for safely testing policy changes and hypotheses before real-world rollout."},
+    {c:"Personal Leverage",t:"Unified Feed Control",s:"idea",u:"http://fixingtheinternet.jacobcole.net/",d:"A single interface managing emails, texts, calls, and feeds with user-defined routing rules."},
+    {c:"Fixing the Internet",t:"Soundbite Propagation Tracker",s:"idea",u:"http://fixingtheinternet.jacobcole.net/",d:"Audio-fingerprinting that traces how a specific quote or claim spreads across media."},
+    {c:"Civic & Government",t:"Global Goals Dashboard",s:"idea",u:"http://fixingtheinternet.jacobcole.net/",d:"A public dashboard visualizing humanity's measured progress on major shared objectives."},
+    {c:"Collective Action",t:"Conditional Voting Pledge",s:"idea",u:"http://hackathonprojects.jacobcole.net/",d:"Citizens commit to vote only if enough peers in their district also pledge, then all activate together."},
+    {c:"Care & Society",t:"Favor-Matching Network",s:"idea",u:"http://hackathonprojects.jacobcole.net/",d:"Maps friends' skills so people can request and exchange favors locally."},
+    {c:"Health & Body",t:"ICU & Ventilator Tracker",s:"idea",u:"http://hackathonprojects.jacobcole.net/",d:"A real-time map of available ventilators and ICU beds across hospitals during a crisis."},
+    {c:"Care & Society",t:"Proximity Hangout Suggester",s:"idea",u:"http://hackathonprojects.jacobcole.net/",d:"Alerts you to nearby friends and suggests a meetup without persistent location tracking."},
+    {c:"Fixing the Internet",t:"Political Bias Classifier",s:"idea",u:"http://hackathonprojects.jacobcole.net/",d:"An ML tool that detects and labels politically biased content in social feeds."},
+    {c:"Climate & Sustainability",t:"Wildfire Satellite Detection",s:"idea",u:"http://hackathonprojects.jacobcole.net/",d:"A model that flags forest fires early from satellite imagery."},
+    {c:"Personal Leverage",t:"Ingredient Recipe Finder",s:"idea",u:"http://hackathonprojects.jacobcole.net/",d:"Recommends recipes from what's in your kitchen and pairs you with a cooking partner."},
+    {c:"Reputation & Trust",t:"Used-Car History Database",s:"idea",u:"http://hackathonprojects.jacobcole.net/",d:"A verified repository of repair and inspection histories for used vehicles."},
+    {c:"Open Knowledge",t:"Idea Graph IDE",s:"idea",u:"http://hackathonprojects.jacobcole.net/",d:"A graph workspace that links hackathon and startup ideas by relationship."},
+    {c:"Open Knowledge",t:"Curiosity Thread Maps",s:"idea",u:"http://hackathonprojects.jacobcole.net/",d:"A platform charting question-to-question sequences that lead from curiosity to expertise."},
+    {c:"Open Knowledge",t:"Best-in-Class Tool Registry",s:"idea",u:"http://fixingtheinternet.jacobcole.net/",d:"A curated directory of the top tool for each purpose, organized by use case."},
+    {c:"Coordination Infra",t:"Curated List Publishing",s:"idea",u:"http://fixingtheinternet.jacobcole.net/",d:"Lets curators easily publish and distribute thematic lists and recommendations."},
+    {c:"Personal Leverage",t:"Context Engineering Prize",s:"idea",u:"https://jacobcole.ai/brainstorms/",d:"A competition to get small models to frontier-level performance through better context."}
   ];
   (function(){
     var grid=document.getElementById('buildgrid'), filters=document.getElementById('filters');
@@ -359,7 +398,7 @@
       BUILD.filter(function(b){return f==='all'||b.s===f}).forEach(function(b){
         var lab=labels[b.s]||["idea","Idea"];
         var ext=b.u?'<a class="ext" href="'+b.u+'" target="_blank" rel="noopener">↗ link</a>':'';
-        var claim='<a class="claim" href="mailto:jacob@ideaflow.io?subject='+encodeURIComponent('Claiming: '+b.t)+'">Claim →</a>';
+        var claim='<a class="claim" href="https://missing-civ-infrastructure.worldissuetracker.com/" target="_blank" rel="noopener">Claim →</a>';
         var el=document.createElement('div');
         el.className='bcard';
         el.innerHTML='<span class="tag '+lab[0]+'">'+lab[1]+'</span><div class="cat">'+b.c+'</div><h3>'+b.t+'</h3><p>'+b.d+'</p><div class="row">'+claim+ext+'</div>';
@@ -374,6 +413,38 @@
       }
     });
     render('all');
+  })();
+
+  // ---- Live WIT-backed claim grid ----
+  (function(){
+    var WIT="https://sthqnyjniclvnflfkyio.supabase.co/functions/v1/get-issues?tracker_slug=missing-civ-infrastructure&label=humanity3&limit=100";
+    var grid=document.getElementById('witgrid');
+    function esc(s){return (s||'').replace(/[&<>]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c]})}
+    function issueUrl(i){return i.canonical_issue_url || ('https://worldissuetracker.com/issue/'+i.slug)}
+    fetch(WIT).then(function(r){return r.json()}).then(function(d){
+      var issues=(d.issues||d.data||[]).filter(function(i){return !i.deleted_at && i.status!=='closed'});
+      if(!issues.length){grid.innerHTML='<div class="witloading">No open quests yet — <a href="https://missing-civ-infrastructure.worldissuetracker.com/" target="_blank" rel="noopener">file the first one →</a></div>';return}
+      issues.sort(function(a,b){return (b.votes||0)-(a.votes||0)});
+      grid.innerHTML='';
+      issues.forEach(function(i){
+        var assignee=i.assignee_display_name;
+        var action=assignee
+          ? '<span class="claimedby">✓ Claimed by '+esc(assignee)+'</span>'
+          : '<a class="claim" href="'+issueUrl(i)+'" target="_blank" rel="noopener">Claim →</a>';
+        var votes=(i.votes!=null)?'<span class="votes">▲ '+i.votes+'</span>':'';
+        var desc=esc((i.description||'').split(' Part of the Humanity')[0]).slice(0,150);
+        var el=document.createElement('div');
+        el.className='bcard';
+        el.innerHTML='<span class="tag '+(assignee?'build':'idea')+'">'+(assignee?'🔨 Claimed':'💡 Open')+'</span>'
+          +'<div class="cat">'+esc(i.category||'infrastructure')+'</div>'
+          +'<h3><a href="'+issueUrl(i)+'" target="_blank" rel="noopener" style="color:inherit">'+esc(i.title)+'</a></h3>'
+          +'<p>'+desc+'</p>'
+          +'<div class="row">'+action+votes+'<a class="ext" href="'+issueUrl(i)+'" target="_blank" rel="noopener">↗ discuss</a></div>';
+        grid.appendChild(el);
+      });
+    }).catch(function(){
+      grid.innerHTML='<div class="witloading">Couldn’t load the live tracker. <a href="https://missing-civ-infrastructure.worldissuetracker.com/" target="_blank" rel="noopener">Open it directly →</a></div>';
+    });
   })();
 
   (function(){
