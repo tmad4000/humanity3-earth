@@ -36,7 +36,10 @@ bd v1.0.4 gives the current worktree priority over the global fallback.
 
 ```bash
 node scripts/validate-infrastructure-data.mjs
+npm test
+npm run validate:data
 python3 -m http.server 7894
+npm run serve
 ```
 
 Open `http://127.0.0.1:7894/` for browser smoke testing.

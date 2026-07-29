@@ -22,12 +22,25 @@ GitHub Pages, DNS via Cloudflare. Dark/light theme toggle, version shown in foot
 The public "People building humanity infrastructure" section renders from
 `data/humanity-infrastructure.json`.
 
+Required metadata fields:
+- `publicLabel`, `lastVerified`, `siteVersion`, `siteLastUpdated`,
+  `siteLastUpdatedLabel`
+- at least one `sourceThread` link
+- at least three `verificationRules`
+
 Required fields for public project entries:
 - `id`, `name`, `status`, `verification`, `focusArea`, `replacesOrEnables`
 - at least one `officialLinks` item
 - at least one `evidence` item from a primary source
 - at least one `people` or maintainer-organization role
 - `lastVerified` as `YYYY-MM-DD`
+
+Pending leads use the same fields as public project entries, but must live in
+`leads`, use `verification: "verification pending"`, and include `pendingReason`.
+
+Signal sources live in `signals` instead of `projects` or `leads`. Required signal
+fields are `id`, `name`, `role: "signal source"`, `signalFor`, `links`,
+`lastVerified`, and `note`.
 
 Verification rules:
 - Use official repositories, project sites, or original public posts before naming a
@@ -45,6 +58,8 @@ page changes, then run:
 ```bash
 node scripts/validate-infrastructure-data.mjs
 ```
+
+The same validator is also available through `npm test` or `npm run validate:data`.
 
 Archive a project by setting `status` to `archived` and leaving the original evidence
 intact. Remove entries only when the original source was wrong or unsafe to publish.
