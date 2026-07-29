@@ -1,0 +1,278 @@
+{
+  "meta": {
+    "schemaVersion": 1,
+    "publicLabel": "People building humanity infrastructure",
+    "sourceThreadDate": "2026-07-29",
+    "lastVerified": "2026-07-29",
+    "siteVersion": "0.4.0",
+    "siteLastUpdated": "2026-07-29T13:53:00-07:00",
+    "siteLastUpdatedLabel": "2026-07-29 13:53 PDT",
+    "summary": "Initial tracker seeded from the July 29, 2026 public thread about practical open replacements for closed personal infrastructure.",
+    "sourceThread": [
+      {
+        "label": "Pieter Levels signal",
+        "url": "https://x.com/levelsio/status/2082477538966675867?s=20"
+      },
+      {
+        "label": "Andrew / Quill signal",
+        "url": "https://x.com/dremnik/status/2081879207509217473"
+      }
+    ],
+    "verificationRules": [
+      "Use official repositories, project sites, or original public posts before naming a builder or maintainer.",
+      "Keep signal sources separate from builders and maintainers.",
+      "Mark a project as verification pending when the project exists but the thread-to-project mapping is not proved.",
+      "Do not infer personal attribution from repository popularity, reposts, or commentary."
+    ]
+  },
+  "projects": [
+    {
+      "id": "freeflow",
+      "name": "FreeFlow",
+      "status": "active",
+      "verification": "verified",
+      "focusArea": "Open voice dictation for macOS",
+      "replacesOrEnables": "A free and inspectable alternative to closed voice-dictation tools such as Wispr Flow, Superwhisper, and Monologue.",
+      "lastVerified": "2026-07-29",
+      "officialLinks": [
+        {
+          "label": "Repository",
+          "url": "https://github.com/zachlatta/freeflow"
+        },
+        {
+          "label": "Project site",
+          "url": "https://freeflow.zachlatta.com/"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "GitHub repository",
+          "url": "https://github.com/zachlatta/freeflow",
+          "note": "Repository description identifies FreeFlow as a free and fast alternative to Wispr Flow; GitHub reports the repo as active and MIT licensed."
+        },
+        {
+          "label": "README attribution",
+          "url": "https://github.com/zachlatta/freeflow#readme",
+          "note": "README credits Marc Bodea for maintaining FreeFlow."
+        }
+      ],
+      "people": [
+        {
+          "name": "Zach Latta",
+          "handle": "@zachlatta",
+          "url": "https://github.com/zachlatta",
+          "role": "creator / source owner",
+          "evidence": "Official repository and project site are under Zach Latta's public namespace."
+        },
+        {
+          "name": "Marc Bodea",
+          "handle": "@marcbodea",
+          "url": "https://github.com/marcbodea",
+          "role": "maintainer",
+          "evidence": "FreeFlow README explicitly thanks Marc Bodea for maintaining the project."
+        }
+      ]
+    },
+    {
+      "id": "quill-cli",
+      "name": "Quill + Quill CLI",
+      "status": "active",
+      "verification": "verified",
+      "focusArea": "Private meeting capture and local transcript access",
+      "replacesOrEnables": "A Granola-like meeting-notes workflow with a verified open-source CLI for local Quill data access.",
+      "lastVerified": "2026-07-29",
+      "officialLinks": [
+        {
+          "label": "Project site",
+          "url": "https://www.quillmeetings.com/"
+        },
+        {
+          "label": "CLI repository",
+          "url": "https://github.com/quillmeetings/quill-cli"
+        },
+        {
+          "label": "CLI announcement",
+          "url": "https://www.quillmeetings.com/blog/your-meetings-now-in-the-terminal-introducing-quill-cli"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Official site",
+          "url": "https://www.quillmeetings.com/",
+          "note": "Quill describes private meeting recording and transcription without bots."
+        },
+        {
+          "label": "CLI repository",
+          "url": "https://github.com/quillmeetings/quill-cli",
+          "note": "GitHub reports quill-cli as an active MIT-licensed repository owned by Quill Meetings."
+        }
+      ],
+      "people": [
+        {
+          "name": "Quill Meetings",
+          "handle": "@quillmeetings",
+          "url": "https://github.com/quillmeetings",
+          "role": "maintainer organization",
+          "evidence": "The verified open-source CLI is published under the Quill Meetings GitHub organization."
+        }
+      ],
+      "notes": "The verified open-source artifact is the CLI. This tracker does not claim that the full desktop app is open source."
+    }
+  ],
+  "signals": [
+    {
+      "id": "andrew-dremnik",
+      "name": "Andrew",
+      "handle": "@dremnik",
+      "role": "signal source",
+      "signalFor": [
+        "quill-cli"
+      ],
+      "links": [
+        {
+          "label": "Original X post",
+          "url": "https://x.com/dremnik/status/2081879207509217473"
+        }
+      ],
+      "lastVerified": "2026-07-29",
+      "note": "Surfaced Quill in the quoted July 29 thread. This is a signal role, not a maintainer attribution."
+    },
+    {
+      "id": "pieter-levels",
+      "name": "Pieter Levels",
+      "handle": "@levelsio",
+      "role": "signal source",
+      "signalFor": [
+        "freeflow",
+        "quill-cli",
+        "openstrap-edge",
+        "goose",
+        "johnmiddleton-wearable"
+      ],
+      "links": [
+        {
+          "label": "Original X post",
+          "url": "https://x.com/levelsio/status/2082477538966675867?s=20"
+        },
+        {
+          "label": "Official site",
+          "url": "https://levels.io/"
+        }
+      ],
+      "lastVerified": "2026-07-29",
+      "note": "Commented on the broader pattern of closed products being reimplemented. This is a signal role, not a builder attribution for the listed projects."
+    }
+  ],
+  "leads": [
+    {
+      "id": "openstrap-edge",
+      "name": "OpenStrap Edge",
+      "status": "active",
+      "verification": "verification pending",
+      "focusArea": "Local, subscription-free WHOOP 4.0 companion app",
+      "replacesOrEnables": "Makes a WHOOP 4.0 band useful without a WHOOP subscription by pairing over Bluetooth and computing metrics on the phone.",
+      "lastVerified": "2026-07-29",
+      "officialLinks": [
+        {
+          "label": "Repository",
+          "url": "https://github.com/OpenStrap/edge"
+        },
+        {
+          "label": "Project site",
+          "url": "https://openstrap.github.io/edge/"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "GitHub repository",
+          "url": "https://github.com/OpenStrap/edge",
+          "note": "Repository description identifies a WHOOP 4.0 app that works without a WHOOP subscription; GitHub reports the repo as active and MIT licensed."
+        }
+      ],
+      "people": [
+        {
+          "name": "OpenStrap",
+          "handle": "@OpenStrap",
+          "url": "https://github.com/OpenStrap",
+          "role": "maintainer organization",
+          "evidence": "The repository is published and maintained under the OpenStrap GitHub organization."
+        }
+      ],
+      "pendingReason": "Verified as an active WHOOP project, but not verified as the exact project Pieter Levels referenced."
+    },
+    {
+      "id": "goose",
+      "name": "Goose",
+      "status": "archived",
+      "verification": "verification pending",
+      "focusArea": "WHOOP 5.0 reverse-engineering proof of concept",
+      "replacesOrEnables": "A local-first experiment for reading WHOOP 5.0 BLE data.",
+      "lastVerified": "2026-07-29",
+      "officialLinks": [
+        {
+          "label": "Repository",
+          "url": "https://github.com/b-nnett/goose"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "GitHub repository",
+          "url": "https://github.com/b-nnett/goose",
+          "note": "GitHub reports the repository as archived; README describes it as an alpha proof of concept."
+        }
+      ],
+      "people": [
+        {
+          "name": "Bennett",
+          "handle": "@b-nnett",
+          "url": "https://github.com/b-nnett",
+          "role": "creator / source owner",
+          "evidence": "The repository is published under the b-nnett GitHub account."
+        }
+      ],
+      "pendingReason": "The project is real, but it is not verified as the exact WHOOP project referenced by Pieter Levels."
+    },
+    {
+      "id": "johnmiddleton-wearable",
+      "name": "Wearable / my-whoop",
+      "status": "experimental",
+      "verification": "verification pending",
+      "focusArea": "WHOOP 4.0 data capture experiment",
+      "replacesOrEnables": "A small experimental repository for extracting data from a WHOOP wearable.",
+      "lastVerified": "2026-07-29",
+      "officialLinks": [
+        {
+          "label": "Repository",
+          "url": "https://github.com/johnmiddleton12/wearable"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "GitHub repository",
+          "url": "https://github.com/johnmiddleton12/wearable",
+          "note": "GitHub reports an active public repository, but no license and no project site were found during initial verification."
+        }
+      ],
+      "people": [
+        {
+          "name": "John Middleton",
+          "handle": "@johnmiddleton12",
+          "url": "https://github.com/johnmiddleton12",
+          "role": "creator / source owner",
+          "evidence": "The repository is published under the johnmiddleton12 GitHub account."
+        }
+      ],
+      "pendingReason": "Retained as a WHOOP source lead because the exact Levels-referenced project was not uniquely identified."
+    }
+  ],
+  "omittedCandidates": [
+    {
+      "name": "OpenWhispr",
+      "reason": "Not included in the public initial set because primary-source evidence did not tie it to the July 29 thread."
+    },
+    {
+      "name": "Muesli",
+      "reason": "Not included in the public initial set because primary-source evidence did not tie a specific Muesli project to the July 29 thread."
+    }
+  ]
+}

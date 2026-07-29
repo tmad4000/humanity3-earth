@@ -15,8 +15,39 @@ activity around it. Basic infrastructure for human flourishing. Free & open sour
 - Healing "Cody Codex" (Notion): https://plausible-text-76b.notion.site/Cody-s-Healing-List-v4-b05b097d529c4c54b5d62f87f55b1f6f
 
 ## Stack
-Static single-file `index.html` (no build step). Hosted on GitHub Pages, DNS via Cloudflare.
-Dark/light theme toggle, version shown in footer.
+Static `index.html` plus checked-in JSON data (no dependency build step). Hosted on
+GitHub Pages, DNS via Cloudflare. Dark/light theme toggle, version shown in footer.
+
+## Humanity Infrastructure Tracker
+The public "People building humanity infrastructure" section renders from
+`data/humanity-infrastructure.json`.
+
+Required fields for public project entries:
+- `id`, `name`, `status`, `verification`, `focusArea`, `replacesOrEnables`
+- at least one `officialLinks` item
+- at least one `evidence` item from a primary source
+- at least one `people` or maintainer-organization role
+- `lastVerified` as `YYYY-MM-DD`
+
+Verification rules:
+- Use official repositories, project sites, or original public posts before naming a
+  builder or maintainer.
+- Keep builders/maintainers separate from signal sources and commentators.
+- If a project exists but the thread-to-project mapping is not proved, keep it in
+  `leads` with `verification: "verification pending"`.
+- Do not add related projects such as OpenWhispr or Muesli unless primary-source
+  evidence ties the specific project to this initial set.
+
+To update the tracker, edit `data/humanity-infrastructure.json`, update
+`meta.lastVerified`, `meta.siteVersion`, and `meta.siteLastUpdated*` when the public
+page changes, then run:
+
+```bash
+node scripts/validate-infrastructure-data.mjs
+```
+
+Archive a project by setting `status` to `archived` and leaving the original evidence
+intact. Remove entries only when the original source was wrong or unsafe to publish.
 
 ## Deploy
 Push to `main`; GitHub Pages serves the root. `CNAME` pins the custom domain.
