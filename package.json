@@ -1,0 +1,11 @@
+{
+  "name": "humanity3-earth",
+  "version": "0.4.0",
+  "private": true,
+  "description": "Static Humanity3 Earth site and humanity infrastructure tracker.",
+  "scripts": {
+    "test": "node scripts/validate-infrastructure-data.mjs",
+    "validate:data": "node scripts/validate-infrastructure-data.mjs",
+    "serve": "python3 -m http.server 7894"
+  }
+}

@@ -1,0 +1,2 @@
+# Placeholder used to force bd v1.0.4 to prefer this worktree-local .beads
+# directory over Jacob's global ~/.beads fallback before initialization.
